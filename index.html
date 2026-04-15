@@ -1,0 +1,2553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akoya Pearl Strand Necklace — ECHOVELLE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      color: #1a1a1a;
+      background: #fff;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    .serif { font-family: 'Libre Baskerville', Baskerville, Georgia, serif; }
+    .sans { font-family: 'Montserrat', sans-serif; }
+    h1, h2, h3, h4 { font-family: 'Libre Baskerville', Baskerville, Georgia, serif; font-weight: 700; }
+    :root {
+      --gold: #8B7D4A;
+      --gold-light: #b5a272;
+      --gold-dark: #6d6238;
+      --cream: #faf9f7;
+      --cream-dark: #f3f1ec;
+      --charcoal: #1a1a1a;
+      --warm-gray: #6b6560;
+      --light-gray: #e8e5df;
+      --white: #ffffff;
+    }
+    ::selection { background: #2C3350; color: #fff; }
+    ::-moz-selection { background: #2C3350; color: #fff; }
+    .container { max-width: 1600px; margin: 0 auto; padding: 0 60px; }
+
+    /* ========== ANNOUNCEMENT BAR ========== */
+    .announcement {
+      background: #2c3350; color: #fff; text-align: center;
+      padding: 12px 20px; font-size: 11px; letter-spacing: 0.2em;
+      text-transform: uppercase; font-weight: 400;
+      position: relative; z-index: 1001; overflow: hidden; height: 40px;
+    }
+    .announcement-slider { position: relative; height: 100%; display: flex; align-items: center; justify-content: center; }
+    .announcement-slide { position: absolute; width: 100%; opacity: 0; transform: translateY(100%); transition: opacity 0.5s ease, transform 0.5s ease; white-space: nowrap; }
+    .announcement-slide.active { opacity: 1; transform: translateY(0); }
+    .announcement-slide.exit-up { opacity: 0; transform: translateY(-100%); }
+    .announcement-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; color: #fff; font-size: 14px; padding: 4px 10px; cursor: pointer; opacity: 0.6; transition: opacity 0.3s; z-index: 2; }
+    .announcement-arrow:hover { opacity: 1; }
+    .announcement-arrow--prev { left: 20px; }
+    .announcement-arrow--next { right: 20px; }
+
+    /* ========== HEADER / NAV ========== */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--white);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+      transition: transform 0.35s ease, background 0.35s ease, box-shadow 0.3s ease;
+    }
+    .header.scrolled,
+    .header.mega-open {
+      background: var(--white);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+    }
+    .header .main-nav > li > a { color: var(--charcoal); font-weight: 500; }
+    .header .nav-icon { color: var(--charcoal); }
+    .header .logo-img { filter: none; }
+    .header.header-hidden { transform: translateY(-100%); }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      padding: 0 40px;
+      height: 68px;
+    }
+    .logo-link { margin-right: 40px; flex-shrink: 0; position: relative; }
+    .logo-img { width: 250px; height: 40px; object-fit: contain; transition: filter 0.35s; }
+    /* Main nav — all links in one row after logo */
+    .main-nav {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+      align-items: center;
+      flex: 1;
+    }
+    .main-nav > li { position: static; }
+    .main-nav > li > a {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-weight: 400;
+      color: var(--charcoal);
+      transition: color 0.2s;
+      padding: 24px 0;
+      display: block;
+    }
+    .main-nav > li > a:hover,
+    .main-nav > li:hover > a { color: var(--gold); }
+    .main-nav > li > a::after { display: none; }
+    /* Utility icons — far right */
+    .nav-utils {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+    .nav-icon {
+      width: 20px;
+      height: 20px;
+      color: var(--charcoal);
+      transition: color 0.3s;
+    }
+    .nav-icon:hover { color: var(--gold-light); }
+
+    /* ========== MEGA MENU ========== */
+    .mega-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      width: 100%;
+      background: var(--white);
+      border-top: 1px solid var(--light-gray);
+      border-bottom: 1px solid var(--light-gray);
+      display: none;
+      padding: 36px 40px 40px;
+      z-index: 999;
+    }
+    .main-nav > li:hover .mega-menu { display: flex; }
+    .mega-sidebar {
+      width: 220px;
+      flex-shrink: 0;
+      padding-right: 36px;
+      border-right: 1px solid var(--light-gray);
+    }
+    .mega-sidebar a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 600;
+      color: var(--charcoal);
+      padding: 10px 0;
+      transition: color 0.2s;
+      text-decoration: none;
+    }
+    .mega-sidebar a:hover { color: var(--gold); }
+    .mega-sidebar a::after {
+      content: '>';
+      font-weight: 400;
+      font-size: 13px;
+    }
+    .mega-sidebar .mega-sidebar-plain::after { content: ''; }
+    .mega-sidebar-bottom {
+      margin-top: auto;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .mega-sidebar-bottom a {
+      font-weight: 400;
+      color: var(--warm-gray);
+      font-size: 11px;
+    }
+    .mega-sidebar-bottom a::after { content: ''; }
+    /* Mega grid — product images */
+    .mega-grid {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+      padding-left: 36px;
+    }
+    .mega-item { text-align: center; cursor: pointer; }
+    .mega-item:hover .mega-item-img { opacity: 0.85; }
+    .mega-item-img {
+      aspect-ratio: 1;
+      background: #f2f0ec;
+      margin-bottom: 10px;
+      background-size: cover;
+      background-position: center;
+      transition: opacity 0.3s;
+    }
+    .mega-item-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--charcoal);
+      font-weight: 400;
+    }
+
+    /* ========== PDP LAYOUT (LilySilk-style) ========== */
+    .pdp {
+      display: grid;
+      grid-template-columns: 55% 45%;
+      min-height: 100vh;
+    }
+
+    /* ---- Left: Stacked images ---- */
+    .pdp-left {
+      position: relative;
+    }
+    .pdp-images {
+      display: flex;
+      flex-direction: column;
+    }
+    .pdp-img-item {
+      width: 100%;
+      overflow: hidden;
+    }
+    .pdp-img-item img {
+      width: 100%;
+      display: block;
+    }
+
+    /* Thumbnail wrapper — sticky inside pdp-left */
+    .pdp-thumbs-wrap {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      width: 0;
+      z-index: 10;
+      float: left;
+    }
+    .pdp-thumbs {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .pdp-left:hover .pdp-thumbs {
+      opacity: 1;
+    }
+    .pdp-thumb {
+      width: 82px;
+      height: 100px;
+      background: #fff;
+      cursor: pointer;
+      overflow: hidden;
+      border: 2px solid transparent;
+      transition: border-color 0.3s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .pdp-thumb.active { border-color: var(--charcoal); }
+    .pdp-thumb:hover { border-color: var(--light-gray); }
+    .pdp-thumb.active:hover { border-color: var(--charcoal); }
+    .pdp-thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Thumb scroll arrow */
+    .pdp-thumb-arrow {
+      width: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 0;
+      cursor: pointer;
+      color: var(--warm-gray);
+      transition: color 0.2s;
+    }
+    .pdp-thumb-arrow:hover { color: var(--charcoal); }
+    .pdp-thumb-arrow svg { width: 18px; height: 18px; }
+
+    /* ---- Right: Product info (sticky) ---- */
+    .pdp-right {
+      position: relative;
+    }
+    .pdp-info {
+      position: sticky;
+      top: 0;
+      padding: 24px 60px 60px 48px;
+    }
+
+    .pdp-category {
+      display: inline-block;
+      font-size: 15px; text-transform: uppercase; letter-spacing: 0.15em;
+      color: #2c3350; font-weight: 500;
+      background: var(--cream); padding: 5px 14px;
+      margin-bottom: 16px; margin-right: 6px;
+    }
+    .pdp-category--premium {
+      background: var(--cream); color: #2c3350;
+    }
+    .pdp-title {
+      font-size: 42px; font-weight: 700; line-height: 1.2;
+      margin-bottom: 16px; color: #2c3350;
+    }
+    .pdp-rating {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 18px;
+    }
+    .pdp-stars { color: var(--charcoal); font-size: 15px; letter-spacing: 2px; }
+    .pdp-review-count { font-size: 15px; color: #3a3a3a; }
+
+    .pdp-price-block {
+      display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 6px;
+    }
+    .pdp-price { font-size: 20px; font-weight: 500; color: var(--charcoal); }
+    .pdp-price-original { font-size: 15px; color: #3a3a3a; text-decoration: line-through; }
+    .pdp-price-badge { font-size: 15px; font-weight: 600; color: #c0392b; }
+
+    .pdp-sale-notice {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px; font-weight: 700;
+      color: #c0392b; margin-bottom: 10px; line-height: 1.6;
+    }
+    .pdp-sale-notice strong { font-weight: 700; }
+
+    .pdp-installment {
+      font-size: 15px; color: #3a3a3a; margin-bottom: 12px; line-height: 1.6;
+    }
+    .pdp-installment strong { color: var(--charcoal); font-weight: 500; }
+
+    /* Worry-free box */
+    .pdp-guarantee {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 15px; color: #3a3a3a; line-height: 1.6;
+      margin-bottom: 24px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--light-gray);
+    }
+    .pdp-guarantee svg { width: 20px; height: 20px; flex-shrink: 0; color: var(--gold); margin-top: 1px; }
+    .pdp-guarantee strong { font-weight: 500; color: var(--charcoal); }
+
+    .pdp-divider { border: none; border-top: 1px solid var(--light-gray); margin: 20px 0; }
+
+    /* Color swatches */
+    .pdp-option-label {
+      font-size: 15px; font-weight: 400; margin-bottom: 12px; color: var(--charcoal);
+    }
+    .pdp-option-label strong { font-weight: 500; }
+    .pdp-swatches { display: flex; gap: 10px; margin-bottom: 28px; }
+    .pdp-swatch {
+      width: 36px; height: 36px; border-radius: 2px;
+      border: 1.5px solid var(--light-gray); cursor: pointer;
+      transition: border-color 0.3s; overflow: hidden;
+    }
+    .pdp-swatch.active { border-color: var(--charcoal); }
+    .pdp-swatch img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Length / Size */
+    .pdp-size-header {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 15px; text-transform: uppercase; letter-spacing: 0.1em;
+      font-weight: 500; margin-bottom: 14px; color: var(--charcoal);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-thickness: 1px;
+      transition: color 0.2s;
+    }
+    .pdp-size-header:hover { color: var(--gold); }
+    .pdp-size-header svg { width: 16px; height: 16px; }
+    .pdp-lengths { display: flex; gap: 0; margin-bottom: 24px; }
+    .pdp-length {
+      width: 52px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid var(--light-gray);
+      margin-right: -1px;
+      font-size: 15px; font-weight: 400; cursor: pointer;
+      transition: all 0.3s;
+    }
+    .pdp-length.active { background: var(--charcoal); color: #fff; border-color: var(--charcoal); z-index: 1; }
+    .pdp-length:hover { border-color: var(--charcoal); z-index: 1; }
+
+    /* Payment Buttons */
+    .pdp-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .pdp-btn-cart {
+      width: 100%; padding: 16px;
+      background: #fff; color: #1a1a1a;
+      font-size: 15px; font-weight: 400;
+      border: 2px solid #1a1a1a;
+      transition: all 0.3s;
+    }
+    .pdp-btn-cart:hover { background: #1a1a1a; color: #fff; }
+    .pdp-btn-buy {
+      width: 100%; padding: 16px;
+      background: #2C3350; color: #fff;
+      font-size: 15px; font-weight: 500;
+      border: 2px solid #2C3350;
+      transition: all 0.3s;
+    }
+    .pdp-btn-buy:hover { background: #1e2440; }
+    .pdp-btn-paypal {
+      width: 100%; padding: 14px;
+      background: #ffc439; color: #111;
+      font-size: 15px; font-weight: 400;
+      border: none;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+    .pdp-btn-paypal:hover { background: #f0b830; }
+    .pdp-more-payments {
+      text-align: center;
+      font-size: 13px;
+      color: #3a3a3a;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      padding: 4px 0;
+    }
+    .pdp-more-payments:hover { color: #1a1a1a; }
+
+    /* Description */
+    .pdp-desc {
+      font-size: 15px; color: #3a3a3a; line-height: 1.9; margin-bottom: 28px;
+    }
+
+    /* ========== ACCORDION ========== */
+    /* Benefits Box */
+    .pdp-benefits {
+      background: var(--cream);
+      padding: 20px 24px;
+      margin-bottom: 24px;
+      border-radius: 4px;
+    }
+    .pdp-benefits-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px; font-weight: 700;
+      color: #1a1a1a; margin-bottom: 16px;
+    }
+    .pdp-benefits-list { display: flex; flex-direction: column; gap: 14px; }
+    .pdp-benefit-item {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 14px; color: #3a3a3a; font-weight: 400;
+    }
+    .pdp-benefit-item svg { width: 22px; height: 22px; flex-shrink: 0; color: #3a3a3a; }
+
+    /* As Seen In Marquee */
+    .pdp-seen-in {
+      margin-top: 28px;
+      padding: 16px 0;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      overflow: hidden;
+    }
+    .pdp-seen-label {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: #1a1a1a;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .pdp-seen-track {
+      flex: 1;
+      overflow: hidden;
+    }
+    .pdp-seen-logos {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      animation: seenScroll 8s linear infinite;
+    }
+    .pdp-seen-logos img {
+      width: 100px;
+      height: 60px;
+      object-fit: contain;
+      opacity: 1;
+      flex-shrink: 0;
+      filter: grayscale(100%);
+    }
+    @keyframes seenScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .pdp-accordions { margin-top: 0; }
+    .pdp-accordion { border-top: 1px solid var(--light-gray); }
+    .pdp-accordion:last-child { border-bottom: 1px solid var(--light-gray); }
+    .pdp-accordion-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 0; cursor: pointer;
+      font-size: 15px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--charcoal);
+    }
+    .pdp-accordion-header:hover { color: var(--gold); }
+    .pdp-accordion-icon { font-size: 20px; font-weight: 300; transition: transform 0.3s; }
+    .pdp-accordion.open .pdp-accordion-icon { transform: rotate(45deg); }
+    .pdp-accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .pdp-accordion.open .pdp-accordion-body { max-height: 600px; }
+    .pdp-accordion-content { padding-bottom: 24px; font-size: 15px; color: #3a3a3a; line-height: 1.9; }
+    .pdp-accordion-content table { width: 100%; border-collapse: collapse; margin-top: 4px; }
+    .pdp-accordion-content td { padding: 7px 0; border-bottom: 1px solid var(--cream-dark); font-size: 15px; }
+    .pdp-accordion-content td:first-child { font-weight: 500; color: var(--charcoal); width: 150px; }
+    .pdp-accordion-content ul { padding-left: 18px; }
+    .pdp-accordion-content li { margin-bottom: 4px; }
+    .pdp-accordion-content p { margin-bottom: 8px; }
+
+    /* ========== PEARL ORIGIN V2 (Left Text, Right Image) ========== */
+    .pearl-origin-v2 {
+      background: #e8ddd2;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+    .pearl-origin-v2-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 520px;
+    }
+    .pearl-origin-v2-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 80px 80px 100px;
+      background: #e8ddd2;
+    }
+    .pearl-origin-v2-eyebrow {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: #2c3350;
+      margin-bottom: 24px;
+      letter-spacing: 0.05em;
+    }
+    .pearl-origin-v2-flag-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .pearl-origin-v2-flag {
+      height: 32px;
+      border-radius: 2px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+      vertical-align: middle;
+      margin-left: 12px;
+      display: inline-block;
+    }
+    .pearl-origin-v2-country-code {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #2c3350;
+    }
+    .pearl-origin-v2-country {
+      font-size: 42px;
+      font-weight: 700;
+      color: #2c3350;
+      margin-bottom: 20px;
+    }
+    .pearl-origin-v2-desc {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      color: #4a4038;
+      line-height: 1.9;
+      max-width: 440px;
+    }
+    .pearl-origin-v2-img {
+      overflow: hidden;
+      position: relative;
+    }
+    .pearl-origin-v2-marker {
+      position: absolute;
+      top: 48%;
+      right: 28%;
+      z-index: 3;
+    }
+    .pearl-origin-v2-pin {
+      width: 10px;
+      height: 10px;
+      background: #fff;
+      border-radius: 50%;
+      position: relative;
+      z-index: 3;
+    }
+    .pearl-origin-v2-pulse {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 30px;
+      height: 30px;
+      border: 1.5px solid rgba(255,255,255,0.5);
+      border-radius: 50%;
+      animation: originPulseV2 2s ease-out infinite;
+    }
+    .pearl-origin-v2-pulse--2 {
+      animation-delay: 1s;
+    }
+    @keyframes originPulseV2 {
+      0% { transform: translate(-50%,-50%) scale(0.5); opacity: 1; }
+      100% { transform: translate(-50%,-50%) scale(2.5); opacity: 0; }
+    }
+    .pearl-origin-v2-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    @media (max-width: 1200px) {
+      .pearl-origin-v2-text { padding: 60px 48px; }
+    }
+    @media (max-width: 768px) {
+      .pearl-origin-v2-inner { grid-template-columns: 1fr; height: auto; }
+      .pearl-origin-v2-text { padding: 48px 24px; order: 2; }
+      .pearl-origin-v2-img { min-height: 280px; order: 1; }
+    }
+
+    /* ========== PEARL GRADING SYSTEM ========== */
+    .pearl-grading {
+      background: #2c3350;
+      position: relative;
+      z-index: 2;
+    }
+    .pearl-grading-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 520px;
+    }
+    .pearl-grading-img {
+      overflow: hidden;
+    }
+    .pearl-grading-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .pearl-grading-text {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 80px 80px 60px;
+      overflow: hidden;
+    }
+    .pearl-grading-watermark {
+      position: absolute;
+      right: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Libre Baskerville', serif;
+      font-size: 320px;
+      font-weight: 400;
+      font-style: italic;
+      color: rgba(255,255,255,0.04);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+    .pearl-grading-title {
+      font-size: 42px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
+    }
+    .pearl-grading-divider {
+      width: 50px;
+      height: 1px;
+      background: rgba(255,255,255,0.25);
+      margin-bottom: 28px;
+    }
+    .pearl-grading-desc {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 15px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.9;
+      max-width: 420px;
+      position: relative;
+      z-index: 1;
+    }
+    .pearl-grading-brand {
+      font-variant: small-caps;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.9);
+    }
+    @media (max-width: 1200px) {
+      .pearl-grading-text { padding: 60px 48px; }
+    }
+    @media (max-width: 768px) {
+      .pearl-grading-inner { grid-template-columns: 1fr; height: auto; }
+      .pearl-grading-img { min-height: 280px; }
+      .pearl-grading-text { padding: 48px 24px; }
+      .pearl-grading-watermark { font-size: 200px; }
+    }
+
+    /* ========== PEARL GRADING CHART ========== */
+    .grade-chart {
+      background: #fff;
+      padding: 80px 0;
+      position: relative;
+      z-index: 2;
+    }
+    .grade-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .grade-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .grade-img {
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .grade-img img {
+      max-height: 100%;
+      width: auto;
+    }
+    .grade-label {
+      width: 100%;
+      text-align: center;
+      font-family: 'Libre Baskerville', serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: #1e2a3a;
+      padding: 14px 0;
+      border: 1px solid #d0ccc6;
+      margin-bottom: 16px;
+      letter-spacing: 0.05em;
+    }
+    .grade-col { position: relative; }
+    .grade-current-tag {
+      position: absolute;
+      top: -52px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      pointer-events: none;
+      z-index: 3;
+    }
+    .grade-current-tag-label {
+      font-family: 'Libre Baskerville', serif;
+      font-style: italic;
+      font-size: 19px;
+      color: #2c3350;
+      letter-spacing: 0.02em;
+      padding: 0 18px;
+      position: relative;
+      white-space: nowrap;
+    }
+    .grade-current-tag-label::before,
+    .grade-current-tag-label::after {
+      content: '';
+      position: absolute;
+      top: 55%;
+      width: 28px;
+      height: 1px;
+      background: #2c3350;
+      opacity: 0.55;
+    }
+    .grade-current-tag-label::before { right: 100%; }
+    .grade-current-tag-label::after { left: 100%; }
+    .grade-current-tag-diamond {
+      width: 6px;
+      height: 6px;
+      background: #2c3350;
+      transform: rotate(45deg);
+      margin-top: 10px;
+    }
+    .grade-label--dark {
+      background: #1e2a3a;
+      color: #fff;
+      border-color: #1e2a3a;
+    }
+    .grade-specs {
+      width: 100%;
+      border: 1px solid #d0ccc6;
+      border-top: 3px solid #1e2a3a;
+      padding: 24px 24px;
+    }
+    .grade-specs p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      color: #3a3a3a;
+      line-height: 1.5;
+      margin-bottom: 8px;
+      font-weight: 300;
+    }
+    .grade-specs p:last-child { margin-bottom: 0; }
+    .grade-shop-btn {
+      display: block;
+      width: 100%;
+      margin-top: 16px;
+      padding: 13px 20px;
+      background: #2c3350;
+      color: #fff;
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      border: 1px solid #2c3350;
+      transition: background 0.3s, color 0.3s;
+    }
+    .grade-shop-btn:hover { background: transparent; color: #2c3350; }
+    .grade-specs p strong {
+      font-weight: 500;
+      color: #1e2a3a;
+    }
+    @media (max-width: 1200px) {
+      .grade-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    }
+    @media (max-width: 768px) {
+      .grade-grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
+      .grade-chart { padding: 48px 0; }
+    }
+
+    /* ========== PEARL ORIGIN ========== */
+    .pearl-origin { background: #2c3a2e; }
+    .pearl-origin-inner { display: grid; grid-template-columns: 1fr 1fr; min-height: 280px; }
+    .pearl-origin-map { position: relative; overflow: hidden; }
+    .pearl-origin-map-svg { width: 100%; height: 100%; position: absolute; inset: 0; }
+    .pearl-origin-marker { position: absolute; top: 32%; right: 22%; }
+    .pearl-origin-pin { width: 10px; height: 10px; background: #fff; border-radius: 50%; position: relative; z-index: 2; }
+    .pearl-origin-pulse { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 30px; height: 30px; border: 1px solid rgba(255,255,255,0.4); border-radius: 50%; animation: originPulse 2s ease-out infinite; }
+    @keyframes originPulse { 0% { transform: translate(-50%,-50%) scale(0.5); opacity: 1; } 100% { transform: translate(-50%,-50%) scale(2); opacity: 0; } }
+    .pearl-origin-text { display: flex; flex-direction: column; justify-content: center; padding: 48px 60px; }
+    .pearl-origin-text h3 { font-size: 24px; font-weight: 400; font-style: italic; margin-bottom: 16px; color: #fff; }
+    .pearl-origin-flags { display: flex; align-items: center; gap: 8px; margin-bottom: 18px; }
+    .pearl-origin-flag { font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.8); }
+    .pearl-origin-text p { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.8; max-width: 480px; }
+    @media (max-width: 768px) { .pearl-origin-inner { grid-template-columns: 1fr; } .pearl-origin-map { min-height: 200px; } .pearl-origin-text { padding: 32px 24px; } }
+
+    /* ========== WHY ECHOVELLE ========== */
+    .why-ev { padding: 100px 0; background: #fff; }
+    .why-ev-title {
+      text-align: center;
+      font-family: 'Libre Baskerville', serif;
+      font-size: 42px;
+      font-weight: 700;
+      color: #2c3350;
+      margin-bottom: 60px;
+    }
+    .why-ev-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .why-ev-list {
+      padding-top: 20px;
+    }
+    .why-ev-item {
+      padding: 0;
+      border-bottom: 1px solid #d0ccc6;
+      cursor: pointer;
+    }
+    .why-ev-header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      padding: 28px 0;
+    }
+    .why-ev-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      color: #999;
+      flex-shrink: 0;
+    }
+    .why-ev-heading {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #1a1a1a;
+      line-height: 1.3;
+      transition: color 0.3s;
+    }
+    .why-ev-item:hover .why-ev-heading { color: #2c3350; }
+    .why-ev-desc {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      color: #3a3a3a;
+      line-height: 1.8;
+      padding: 0 0 24px 28px;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.4s ease;
+    }
+    .why-ev-item--active .why-ev-desc {
+      max-height: 200px;
+      opacity: 1;
+      padding-bottom: 28px;
+    }
+    .why-ev-desc strong { font-weight: 500; color: #1a1a1a; }
+    .why-ev-img {
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+    }
+    .why-ev-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.4s ease;
+    }
+    @media (max-width: 1200px) {
+      .why-ev-layout { gap: 48px; }
+      .why-ev-heading { font-size: 20px; }
+    }
+    @media (max-width: 768px) {
+      .why-ev { padding: 60px 0; }
+      .why-ev-title { font-size: 32px; margin-bottom: 40px; }
+      .why-ev-layout { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    /* ========== WHAT YOU'LL RECEIVE ========== */
+    .receive { background: #fff; padding: 80px 0; position: relative; z-index: 2; }
+    .receive-header { text-align: center; margin-bottom: 60px; }
+    .receive-icon { width: 32px; height: 32px; margin: 0 auto 16px; display: block; }
+    .receive-header h2 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 42px; font-weight: 700;
+      color: #2c3350;
+    }
+    .receive-layout {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: center;
+    }
+    .receive-list { display: flex; flex-direction: column; gap: 0; }
+    .receive-item {
+      display: flex; align-items: flex-start; gap: 20px;
+      padding: 28px 0;
+    }
+    .receive-check { flex-shrink: 0; width: 32px; height: 32px; margin-top: 2px; }
+    .receive-check svg { width: 32px; height: 32px; opacity: 0.8; }
+    .receive-item h3 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 18px; font-weight: 700; color: #1a1a1a;
+      margin-bottom: 6px;
+    }
+    .receive-item p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px; font-weight: 300; color: #3a3a3a;
+      line-height: 1.6;
+    }
+    .receive-img img { width: 100%; height: auto; }
+    @media (max-width: 1200px) { .receive-layout { gap: 40px; } }
+    @media (max-width: 768px) {
+      .receive { padding: 60px 0; }
+      .receive-header h2 { font-size: 24px; }
+      .receive-layout { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    /* ========== OUR PRICING EXPLAINED ========== */
+    .pricing-explained { background: #2c3350; color: #fff; padding: 80px 0; position: relative; z-index: 2; }
+    .pricing-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 48px;
+    }
+    .pricing-title { font-size: 42px; font-weight: 700; color: #fff; flex-shrink: 0; }
+    .pricing-text-right { max-width: 480px; text-align: left; }
+    .pricing-text-right h3 { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 10px; font-family: 'Montserrat', sans-serif; }
+    .pricing-text-right p { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.8; }
+    .pricing-img img { width: 100%; height: auto; }
+    @media (max-width: 768px) {
+      .pricing-top { flex-direction: column; gap: 24px; }
+    }
+
+    /* ========== SUPPORTING CLEAN OCEANS ========== */
+    .clean-oceans { background: #ddf0f5; }
+    .clean-oceans-inner { display: grid; grid-template-columns: 1fr 1fr; }
+    .clean-oceans-img { overflow: hidden; min-height: 320px; }
+    .clean-oceans-img img { width: 100%; height: 100%; object-fit: cover; }
+    .clean-oceans-text { position: relative; display: flex; align-items: center; justify-content: center; padding: 60px; overflow: hidden; }
+    .clean-oceans-waves { position: absolute; inset: 0; pointer-events: none; }
+    .wave-icon { position: absolute; font-size: 20px; color: rgba(44,51,80,0.15); font-weight: 300; }
+    .wave-icon:nth-child(1) { top: 10%; left: 12%; } .wave-icon:nth-child(2) { top: 6%; right: 18%; }
+    .wave-icon:nth-child(3) { bottom: 20%; left: 8%; } .wave-icon:nth-child(4) { top: 50%; left: 4%; }
+    .wave-icon:nth-child(5) { bottom: 8%; right: 10%; } .wave-icon:nth-child(6) { top: 28%; right: 6%; }
+    .wave-icon:nth-child(7) { bottom: 35%; right: 25%; } .wave-icon:nth-child(8) { top: 18%; left: 40%; }
+    .clean-oceans-content { text-align: center; max-width: 380px; position: relative; z-index: 1; }
+    .clean-oceans-icon { width: 60px; height: 60px; margin: 0 auto 20px; background: rgba(245,237,232,0.7); border-radius: 50%; padding: 8px; }
+    .clean-oceans-content h3 { font-size: 42px; font-weight: 700; color: #2c3350; margin-bottom: 16px; }
+    .clean-oceans-content p { font-size: 14px; color: #3a4a5a; line-height: 1.8; margin-bottom: 24px; }
+    .clean-oceans-link { font-size: 14px; font-weight: 500; color: #2c3350; display: inline-flex; align-items: center; gap: 8px; }
+    .clean-oceans-arrow { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: #c8a951; border-radius: 50%; font-size: 14px; color: #fff; transition: background 0.3s; }
+    .clean-oceans-link:hover .clean-oceans-arrow { background: #2c3350; }
+    @media (max-width: 768px) { .clean-oceans-inner { grid-template-columns: 1fr; } .clean-oceans-img { min-height: 220px; } .clean-oceans-text { padding: 40px 24px; } }
+
+    /* ========== BELOW-FOLD SECTIONS ========== */
+    .also-like { padding: 80px 0; background: var(--cream); }
+    .also-like-header { text-align: center; margin-bottom: 50px; }
+    .also-like-header h2 { font-size: 32px; font-weight: 700; }
+    .also-like-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+
+    /* Product card (matches homepage bs-card) */
+    .also-like-card { cursor: pointer; }
+    .also-like-card-img {
+      position: relative; aspect-ratio: 1/1; overflow: hidden;
+      margin-bottom: 20px; background: #f0f0f0; border-radius: 4px;
+    }
+    .also-like-card-img-inner {
+      position: absolute; inset: 0;
+      background-size: contain; background-position: center; background-repeat: no-repeat;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .also-like-card-img-inner.img-hover { background-size: cover; opacity: 0; }
+    .also-like-card:hover .also-like-card-img-inner.img-default { opacity: 0; }
+    .also-like-card:hover .also-like-card-img-inner.img-hover { opacity: 1; }
+    .also-like-card:hover .also-like-card-img-inner { transform: scale(1.03); }
+    .also-like-card-info { text-align: center; }
+    .also-like-card-info .card-category {
+      font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.15em; color: #2c3350; margin-bottom: 6px;
+    }
+    .also-like-card-info h4 {
+      font-family: 'Montserrat', sans-serif; font-size: 14px; color: var(--charcoal);
+      margin-bottom: 6px; font-weight: 400; line-height: 1.4;
+    }
+    .also-like-card-info .card-price { font-size: 14px; color: var(--charcoal); font-weight: 400; margin-bottom: 8px; }
+    .also-like-card-info .card-stars { color: #c8a951; font-size: 13px; }
+    .also-like-card-info .card-review-count { font-size: 12px; color: var(--warm-gray); margin-left: 6px; }
+    .also-like-card-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: #2c3350;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 5px 11px;
+      border-radius: 20px;
+      z-index: 2;
+    }
+    .also-like-card-badge--gold {
+      background: #8B7D4A;
+    }
+    .also-like-card-badge--cream {
+      background: #f3efe6;
+      color: #2c3350;
+    }
+
+    /* ========== SIGNATURE SERIES EDITORIAL ========== */
+    .art-series {
+      position: relative;
+      background: #ffffff;
+      z-index: 3;
+    }
+    .art-series-intro {
+      text-align: center;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px 60px 30px;
+    }
+    .art-series-headline {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 42px;
+      line-height: 1.3;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin: 0;
+    }
+    .art-series-line {
+      display: block;
+    }
+    .art-word {
+      display: inline-block;
+      color: #c8d0de;
+    }
+    .art-series-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: #2c3350;
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .art-series-stick {
+      position: sticky;
+      top: 83px;
+      z-index: 0;
+      background: #fff;
+      will-change: transform;
+    }
+    .art-series-title {
+      text-align: center;
+      font-family: 'Libre Baskerville', serif;
+      font-size: 62px;
+      font-weight: 700;
+      color: #2c3350;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      line-height: 1.2;
+      margin: 0;
+      padding: 30px 40px 10px;
+    }
+    .art-grid-wrap {
+      position: relative;
+      z-index: 1;
+      background: transparent;
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 40px 60px 140px;
+    }
+    .art-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 200px;
+      align-items: start;
+    }
+    .art-grid-col {
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+    }
+    .art-grid-col--left {
+      padding-top: 240px;
+    }
+    .art-grid-col--right {
+      padding-top: 0;
+    }
+    .art-card {
+      position: relative;
+    }
+    .art-card-img {
+      position: relative;
+      overflow: hidden;
+      background: #e4ddc9;
+      aspect-ratio: 4 / 5;
+    }
+    .art-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+    .art-card .art-card-img img { transition: none; }
+    .art-card-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: #2c3350;
+      color: #f0e8d4;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 20px;
+      z-index: 2;
+    }
+    .art-card-zoom {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 34px;
+      height: 34px;
+      background: rgba(44, 51, 80, 0.85);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 2;
+    }
+    .art-card-zoom svg { width: 15px; height: 15px; }
+    .art-card:hover .art-card-zoom { opacity: 1; }
+    .art-card-name {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 22px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #2c3350;
+      margin-top: 22px;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+    .art-card-price {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      color: #5a5449;
+      margin-top: 8px;
+      letter-spacing: 0.1em;
+      font-weight: 400;
+    }
+    @media (max-width: 1024px) {
+      .art-series-intro { padding: 64px 32px 48px; }
+      .art-series-headline { font-size: 32px; }
+      .art-series-title { font-size: 72px; padding: 40px 32px; }
+      .art-grid-wrap { padding: 40px 40px 80px; }
+      .art-grid { column-gap: 40px; }
+      .art-card-name { font-size: 18px; }
+    }
+    @media (max-width: 768px) {
+      .art-series-intro { padding: 48px 20px 32px; }
+      .art-series-headline { font-size: 22px; }
+      .art-series-sub { font-size: 12px; }
+      .art-series-title { font-size: 40px; letter-spacing: 0.04em; padding: 32px 20px; top: 30vh; }
+      .art-grid-wrap { padding: 32px 24px 60px; }
+      .art-grid { column-count: 1; }
+      .art-card { margin-top: 0 !important; margin-bottom: 40px; }
+      .art-card-name { font-size: 16px; }
+    }
+
+    .recently-viewed { padding: 60px 0 80px; position: relative; z-index: 2; background: #fff; }
+    .recently-viewed .also-like-header { margin-bottom: 40px; }
+    .recently-viewed .also-like-header h2 { font-size: 42px; color: #2c3350; }
+
+    /* ========== NEWSLETTER ========== */
+    .newsletter { background: var(--cream-dark); border-top: 1px solid var(--light-gray); padding: 70px 0; text-align: center; position: relative; z-index: 2; }
+    .newsletter h2 { font-size: 42px; margin-bottom: 10px; color: #2c3350; }
+    .newsletter p { font-size: 14px; font-weight: 300; color: #2c3350; max-width: 520px; margin: 0 auto 28px; line-height: 1.6; }
+    .nl-form { display: flex; max-width: 440px; margin: 0 auto; }
+    .nl-form input { flex: 1; padding: 14px 18px; border: 1px solid var(--light-gray); background: var(--white); font-size: 12px; font-weight: 300; font-family: inherit; color: var(--charcoal); outline: none; transition: border-color 0.3s; }
+    .nl-form input::placeholder { color: #bbb; }
+    .nl-form input:focus { border-color: var(--gold); }
+    .nl-form button { padding: 14px 32px; background: #2C3350; color: #fff; font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em; font-weight: 500; font-family: inherit; transition: background 0.4s; }
+    .nl-form button:hover { background: #1a1a1a; }
+
+    /* ========== FOOTER ========== */
+    .footer { background: #2c3350; padding: 60px 0 100px; color: #fff; position: relative; z-index: 2; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 50px; }
+    .footer-logo { width: 250px; height: 40px; object-fit: contain; filter: brightness(0) invert(1); }
+    .footer-brand-text { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.7; margin-top: 18px; max-width: 280px; }
+    .footer h5 { font-family: 'Montserrat', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: #fff; margin-bottom: 16px; font-weight: 700; }
+    .footer ul { list-style: none; }
+    .footer li { margin-bottom: 8px; }
+    .footer li a { font-size: 13px; color: rgba(255,255,255,0.65); transition: color 0.3s; }
+    .footer li a:hover { color: var(--gold-light); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.15); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: rgba(255,255,255,0.5); }
+    .footer-social { display: flex; gap: 20px; }
+    .footer-social a { color: rgba(255,255,255,0.65); font-size: 12px; transition: color 0.3s; }
+    .footer-social a:hover { color: var(--gold-light); }
+
+    /* ========== STICKY BUY BAR ========== */
+    .sticky-buy-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background: #fff;
+      border-top: 1px solid var(--light-gray);
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+      transform: translateY(100%);
+      transition: transform 0.4s ease;
+    }
+    .sticky-buy-bar.visible {
+      transform: translateY(0);
+    }
+    .sticky-buy-inner {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 12px 40px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .sticky-buy-product {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex: 1;
+      min-width: 0;
+    }
+    .sticky-buy-img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      background: var(--cream);
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+    .sticky-buy-info { min-width: 0; }
+    .sticky-buy-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--charcoal);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .sticky-buy-price {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--charcoal);
+    }
+    .sticky-buy-original {
+      font-size: 12px;
+      color: var(--warm-gray);
+      text-decoration: line-through;
+      margin-left: 6px;
+      font-weight: 300;
+    }
+    .sticky-buy-options {
+      display: flex;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .sticky-buy-select {
+      padding: 10px 32px 10px 14px;
+      border: 1px solid var(--light-gray);
+      font-size: 12px;
+      font-family: inherit;
+      color: var(--charcoal);
+      background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%236b6560'/%3E%3C/svg%3E") right 12px center no-repeat;
+      appearance: none;
+      cursor: pointer;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .sticky-buy-select:hover { border-color: var(--charcoal); }
+    .sticky-buy-btn {
+      padding: 14px 40px;
+      background: #2C3350;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      border: 1px solid #2C3350;
+      flex-shrink: 0;
+      transition: all 0.4s;
+    }
+    .sticky-buy-btn:hover {
+      background: #fff;
+      color: #2C3350;
+    }
+
+    /* ========== LENGTH GUIDE MODAL ========== */
+    .pdp-size-header { cursor: pointer; }
+    body.modal-open { overflow: hidden; }
+    .length-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      overflow-y: auto;
+      padding: 40px 20px;
+    }
+    .length-modal.open { display: flex; }
+    .length-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(26,26,26,0.55);
+      backdrop-filter: blur(3px);
+    }
+    .length-modal-inner {
+      position: relative;
+      background: #fff;
+      max-width: 1080px;
+      width: 100%;
+      padding: 48px 48px 56px;
+      border-radius: 4px;
+      z-index: 1;
+      animation: lengthModalIn 0.35s cubic-bezier(0.22,0.61,0.36,1);
+    }
+    @keyframes lengthModalIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .length-modal-close {
+      position: absolute;
+      top: 22px;
+      right: 22px;
+      width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      color: #1a1a1a;
+      transition: color 0.2s;
+    }
+    .length-modal-close:hover { color: var(--gold); }
+    .length-modal-close svg { width: 24px; height: 24px; }
+    .length-modal-title {
+      text-align: center;
+      font-family: 'Libre Baskerville', serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 32px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .length-modal-body {
+      background: #e1e5ef;
+      padding: 20px 48px;
+      border-radius: 4px;
+    }
+    .length-group {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 48px;
+      align-items: center;
+      padding: 28px 0;
+    }
+    .length-group + .length-group { border-top: 1px solid #c9d0dd; }
+    .length-illu {
+      width: 100%;
+      aspect-ratio: 1;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .length-illu svg { width: 100%; height: 100%; }
+    .length-illu-label {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Libre Baskerville', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #8B7D4A;
+      letter-spacing: 0.12em;
+    }
+    .length-rows { width: 100%; }
+    .length-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 16px 0;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      color: #1a1a1a;
+      border-bottom: 1px solid #c0c8d6;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .length-group:last-child .length-row:last-child { border-bottom: none; }
+    .length-row-label { font-weight: 500; }
+    .length-row-value { color: #3a3a3a; font-weight: 400; text-align: right; }
+    .length-row-sub {
+      width: 100%;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #a09a8c;
+      margin-top: -2px;
+    }
+    @media (max-width: 760px) {
+      .length-modal-inner { padding: 40px 20px 40px; }
+      .length-modal-body { padding: 12px 24px; }
+      .length-group { grid-template-columns: 1fr; gap: 20px; padding: 24px 0; }
+      .length-illu { width: 160px; margin: 0 auto; }
+      .length-modal-title { font-size: 20px; }
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 1024px) {
+      .pdp { grid-template-columns: 1fr; }
+      .pdp-info { position: static; max-height: none; padding: 32px 40px 60px; }
+      .pdp-thumbs-wrap { display: none; }
+      .also-like-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .container { padding: 0 24px; }
+      .header-inner { padding: 0 20px; }
+      .main-nav { display: none; }
+      .pdp-info { padding: 24px 24px 48px; }
+      .pdp-title { font-size: 28px; }
+      .also-like-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .sticky-buy-options { display: none; }
+      .sticky-buy-inner { padding: 10px 20px; }
+      .sticky-buy-btn { padding: 12px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== ANNOUNCEMENT BAR ===== -->
+  <div class="announcement">
+    <button class="announcement-arrow announcement-arrow--prev" aria-label="Previous">&#10094;</button>
+    <div class="announcement-slider">
+      <div class="announcement-slide active">Free Shipping on All Orders (Excludes Remote &amp; Undeliverable Areas)</div>
+      <div class="announcement-slide">$15 OFF Orders Over $250</div>
+      <div class="announcement-slide">$40 OFF Orders Over $500</div>
+      <div class="announcement-slide">$90 OFF Orders Over $1000</div>
+      <div class="announcement-slide">$200 OFF Orders Over $2000</div>
+    </div>
+    <button class="announcement-arrow announcement-arrow--next" aria-label="Next">&#10095;</button>
+  </div>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo-link">
+        <img src="logo-echovelle.png" alt="ECHOVELLE" class="logo-img">
+      </a>
+      <ul class="main-nav">
+        <!-- NECKLACES with mega menu -->
+        <li>
+          <a href="#">Necklaces</a>
+          <div class="mega-menu">
+            <div class="mega-sidebar" style="display:flex;flex-direction:column;">
+              <div>
+                <a href="#">Shop Necklaces</a>
+                <a href="#" class="mega-sidebar-plain">View All</a>
+              </div>
+              <div class="mega-sidebar-bottom">
+                <a href="#">Our Story</a>
+                <a href="#">Book a Consultation</a>
+                <a href="#">Contact Us</a>
+              </div>
+            </div>
+            <div class="mega-grid">
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/IMG_0727.jpg?v=1775547658')"></div><p class="mega-item-label">Everyday Necklaces</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/IMG_0694_2.jpg?v=1775547658')"></div><p class="mega-item-label">Gift Necklaces</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/IMG_0705.jpg?v=1775547658')"></div><p class="mega-item-label">Statement Necklaces</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/6570-ak-w3a.webp?v=1775547656')"></div><p class="mega-item-label">Elevated Necklaces</p></div>
+            </div>
+          </div>
+        </li>
+        <!-- EARRINGS with mega menu -->
+        <li>
+          <a href="#">Earrings</a>
+          <div class="mega-menu">
+            <div class="mega-sidebar" style="display:flex;flex-direction:column;">
+              <div>
+                <a href="#">Shop Earrings</a>
+                <a href="#" class="mega-sidebar-plain">View All</a>
+              </div>
+              <div class="mega-sidebar-bottom">
+                <a href="#">Our Story</a>
+                <a href="#">Book a Consultation</a>
+                <a href="#">Contact Us</a>
+              </div>
+            </div>
+            <div class="mega-grid">
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/08a4bf12-7975-4101-ac4a-8d1aa3ea688f.png?v=1775547658')"></div><p class="mega-item-label">Stud Earrings</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/simple_Angela_side_view_small_file.jpg?v=1775547657')"></div><p class="mega-item-label">Drop Earrings</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/IMG_0730_2.jpg?v=1775547658')"></div><p class="mega-item-label">Gift Earrings</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/DSC01434-4.jpg?v=1775547657')"></div><p class="mega-item-label">Statement Earrings</p></div>
+            </div>
+          </div>
+        </li>
+        <!-- GIFTS with mega menu -->
+        <li>
+          <a href="#">Gifts</a>
+          <div class="mega-menu">
+            <div class="mega-sidebar" style="display:flex;flex-direction:column;">
+              <div>
+                <a href="#">Shop Gifts</a>
+                <a href="#" class="mega-sidebar-plain">Gift Cards</a>
+              </div>
+              <div class="mega-sidebar-bottom">
+                <a href="#">Our Story</a>
+                <a href="#">Book a Consultation</a>
+                <a href="#">Contact Us</a>
+              </div>
+            </div>
+            <div class="mega-grid">
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/about_600x_3dbaadcc-51b8-440c-b2ed-29ef6c33f41e.png?v=1775547658')"></div><p class="mega-item-label">Gifts for Her</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/0508ins_800x_aec719ef-ec66-4e4c-8682-f4b81b2bc9fa.png?v=1775547659')"></div><p class="mega-item-label">Birthday Gifts</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/Untitled_design.jpg?v=1775547656')"></div><p class="mega-item-label">Anniversary Gifts</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/simple_Angela_side_view_small_file.jpg?v=1775547657')"></div><p class="mega-item-label">Mother&rsquo;s Day Gifts</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/1_1200x_14ae4146-6138-46a5-9c80-f4e2a54aa558.png?v=1775547661')"></div><p class="mega-item-label">Gift Sets</p></div>
+            </div>
+          </div>
+        </li>
+        <!-- COLLECTIONS with mega menu -->
+        <li>
+          <a href="#">Collections</a>
+          <div class="mega-menu">
+            <div class="mega-sidebar" style="display:flex;flex-direction:column;">
+              <div>
+                <a href="#">Editorial Edits</a>
+                <a href="#" class="mega-sidebar-plain">Shop All</a>
+              </div>
+              <div class="mega-sidebar-bottom">
+                <a href="#">Our Story</a>
+                <a href="#">Book a Consultation</a>
+                <a href="#">Contact Us</a>
+              </div>
+            </div>
+            <div class="mega-grid">
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/IMG_0705.jpg?v=1775547658')"></div><p class="mega-item-label">Design Edit</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/Untitled_design.jpg?v=1775547656')"></div><p class="mega-item-label">Gift Edit</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/6570-ak-w3a.webp?v=1775547656')"></div><p class="mega-item-label">Elevated Edit</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/IMG_0684.jpg?v=1775547658')"></div><p class="mega-item-label">New Arrivals</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/IMG_0694_2.jpg?v=1775547658')"></div><p class="mega-item-label">Best Sellers</p></div>
+            </div>
+          </div>
+        </li>
+        <!-- ABOUT with mega menu -->
+        <li>
+          <a href="#">About</a>
+          <div class="mega-menu">
+            <div class="mega-sidebar" style="display:flex;flex-direction:column;">
+              <div>
+                <a href="#">The House of Echovelle</a>
+                <a href="#" class="mega-sidebar-plain">Customer Care</a>
+              </div>
+              <div class="mega-sidebar-bottom">
+                <a href="#">Book a Consultation</a>
+                <a href="#">Contact Us</a>
+              </div>
+            </div>
+            <div class="mega-grid">
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/about_600x_3dbaadcc-51b8-440c-b2ed-29ef6c33f41e.png?v=1775547658')"></div><p class="mega-item-label">Our Story</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/DSC01434-4.jpg?v=1775547657')"></div><p class="mega-item-label">Pearl Care</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/bg-image-rings.png?v=1775547658')"></div><p class="mega-item-label">Warranty</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/1_1200x_14ae4146-6138-46a5-9c80-f4e2a54aa558.png?v=1775547661')"></div><p class="mega-item-label">FAQ</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/Untitled_design.jpg?v=1775547656')"></div><p class="mega-item-label">Contact Us</p></div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="nav-utils">
+        <a href="#" class="nav-icon" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></a>
+        <a href="#" class="nav-icon" aria-label="Wishlist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></a>
+        <a href="#" class="nav-icon" aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg></a>
+        <a href="#" class="nav-icon" aria-label="Bag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== PRODUCT DETAIL ===== -->
+  <div class="pdp">
+
+    <!-- LEFT: Stacked images -->
+    <div class="pdp-left">
+      <!-- Thumbnail strip (shows on hover, sticky within left column) -->
+      <div class="pdp-thumbs-wrap">
+      <div class="pdp-thumbs" id="pdpThumbs">
+        <div class="pdp-thumb active" data-index="0"><img src="产品页主图/1.webp" alt=""></div>
+        <div class="pdp-thumb" data-index="1"><img src="产品页主图/2.webp" alt=""></div>
+        <div class="pdp-thumb" data-index="2"><img src="产品页主图/3.webp" alt=""></div>
+        <div class="pdp-thumb-arrow" id="thumbArrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </div>
+      </div><!-- /.pdp-thumbs-wrap -->
+      <!-- Full-size stacked images -->
+      <div class="pdp-images" id="pdpImages">
+        <div class="pdp-img-item"><img src="产品页主图/1.webp" alt="Akoya Pearl Strand Necklace"></div>
+        <div class="pdp-img-item"><img src="产品页主图/2.webp" alt="On model"></div>
+        <div class="pdp-img-item"><img src="产品页主图/3.webp" alt="Pearl detail"></div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Product info (sticky) -->
+    <div class="pdp-right">
+      <div class="pdp-info">
+        <span class="pdp-category sans">Best Sellers</span>
+        <span class="pdp-category pdp-category--premium sans">Premium</span>
+        <h1 class="pdp-title">Akoya Pearl Strand Necklace</h1>
+
+        <div class="pdp-rating">
+          <span class="pdp-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span class="pdp-review-count">5.0 (12)</span>
+        </div>
+
+        <div class="pdp-price-block">
+          <span class="pdp-price">$385.00</span>
+          <span class="pdp-price-original">$520.00</span>
+        </div>
+        <p class="pdp-sale-notice"><strong>Mother&rsquo;s Day Exclusive</strong> &nbsp;A gentle gesture for the one who holds your heart — thoughtfully curated to be cherished, just like her.</p>
+
+
+        <!-- Benefits Box -->
+        <div class="pdp-benefits">
+          <p class="pdp-benefits-title"><strong>Your purchase includes:</strong></p>
+          <div class="pdp-benefits-list">
+            <div class="pdp-benefit-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="6" width="15" height="12" rx="2"/><path d="M16 10h4l3 4v4h-7V10z"/><circle cx="5.5" cy="19.5" r="1.5"/><circle cx="18.5" cy="19.5" r="1.5"/></svg>
+              <span>Free shipping always</span>
+            </div>
+            <div class="pdp-benefit-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+              <span>Worry-Free Delivery</span>
+            </div>
+            <div class="pdp-benefit-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              <span>Exclusive Membership rewards</span>
+            </div>
+            <div class="pdp-benefit-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
+              <span>100-day money-back guarantee</span>
+            </div>
+            <div class="pdp-benefit-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M10 9v6M14 9v6"/></svg>
+              <span>Pause or cancel anytime</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Color -->
+        <p class="pdp-option-label">Color: <strong>White Ros&eacute;</strong></p>
+        <div class="pdp-swatches">
+          <div class="pdp-swatch active" title="White Rosé" style="background: radial-gradient(ellipse at 30% 28%, #fff, #f0ede8, #e0ddd5);"></div>
+          <div class="pdp-swatch" title="Pink" style="background: radial-gradient(ellipse at 30% 28%, #f5e0d8, #e8c4b8, #d4a898);"></div>
+          <div class="pdp-swatch" title="Golden" style="background: radial-gradient(ellipse at 30% 28%, #f5ecd0, #ddc98a, #c5a860);"></div>
+          <div class="pdp-swatch" title="Tahitian" style="background: radial-gradient(ellipse at 30% 28%, #6a6a6a, #3a3a3a, #1a1a1a);"></div>
+        </div>
+
+        <!-- Length -->
+        <div class="pdp-size-header">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
+          What's My Length?
+        </div>
+        <div class="pdp-lengths">
+          <div class="pdp-length">16"</div>
+          <div class="pdp-length active">18"</div>
+          <div class="pdp-length">20"</div>
+          <div class="pdp-length">22"</div>
+          <div class="pdp-length">24"</div>
+        </div>
+
+        <!-- Payment Buttons -->
+        <div class="pdp-buttons">
+          <button class="pdp-btn-cart sans">Add to Cart</button>
+          <button class="pdp-btn-buy sans">Buy Now</button>
+          <button class="pdp-btn-paypal">Pay with <strong>Pay</strong><strong style="color:#009cde;">Pal</strong></button>
+          <a href="#" class="pdp-more-payments">More payment options</a>
+        </div>
+
+
+        <!-- Accordions -->
+        <div class="pdp-accordions">
+          <div class="pdp-accordion">
+            <div class="pdp-accordion-header">
+              <span>Jewelry Details</span>
+              <span class="pdp-accordion-icon">+</span>
+            </div>
+            <div class="pdp-accordion-body">
+              <div class="pdp-accordion-content">
+                <table>
+                  <tr><td>Pearl Type</td><td>Akoya (Saltwater)</td></tr>
+                  <tr><td>Pearl Size</td><td>7.0 – 7.5 mm</td></tr>
+                  <tr><td>Shape</td><td>Round</td></tr>
+                  <tr><td>Color</td><td>White with Rosé Overtones</td></tr>
+                  <tr><td>Luster</td><td>Very High (AAA)</td></tr>
+                  <tr><td>Nacre</td><td>Very Thick (0.4mm+)</td></tr>
+                  <tr><td>Clasp</td><td>18K White Gold</td></tr>
+                  <tr><td>Thread</td><td>Hand-Knotted Silk</td></tr>
+                  <tr><td>Lengths</td><td>16" – 24"</td></tr>
+                  <tr><td>Origin</td><td>Japan</td></tr>
+                </table>
+                <p style="margin-top:12px">Highlights:</p>
+                <ul>
+                  <li>100% natural Akoya pearls, AAA grade luster</li>
+                  <li>Hand-knotted on silk thread for durability</li>
+                  <li>Comes in Echovelle signature gift box with Certificate of Authenticity</li>
+                </ul>
+                <p style="margin-top:12px">Care:</p>
+                <ul>
+                  <li>Wipe with soft cloth after each wear</li>
+                  <li>Store separately in a soft pouch</li>
+                  <li>Avoid chemicals, perfume, and hairspray</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="pdp-accordion">
+            <div class="pdp-accordion-header">
+              <span>What You&rsquo;ll Receive</span>
+              <span class="pdp-accordion-icon">+</span>
+            </div>
+            <div class="pdp-accordion-body">
+              <div class="pdp-accordion-content">
+                <ul>
+                  <li><strong>Certificate of Authenticity</strong> — Guaranteed to be real pearls of the finest quality</li>
+                  <li><strong>Custom Jewelry Box</strong> — Custom velvet-lined protective jewelry box</li>
+                  <li><strong>Care Instructions</strong> — Wear often &amp; wipe pearls clean with soft cloth</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="pdp-accordion">
+            <div class="pdp-accordion-header">
+              <span>Shipping &amp; Return</span>
+              <span class="pdp-accordion-icon">+</span>
+            </div>
+            <div class="pdp-accordion-body">
+              <div class="pdp-accordion-content">
+                <p><strong>Shipping</strong></p>
+                <ul>
+                  <li>Free Shipping on All Orders</li>
+                  <li>5–8 Business Days Delivery</li>
+                </ul>
+                <p style="margin-top:12px"><strong>Return</strong></p>
+                <ul>
+                  <li>100-Day Easy Returns. Items must be in original condition with all packaging.</li>
+                </ul>
+                <p style="margin-top:12px">Our packaging uses eco-friendly materials to support our sustainability commitment.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- As Seen In -->
+        <div class="pdp-seen-in">
+          <span class="pdp-seen-label">AS SEEN IN</span>
+          <div class="pdp-seen-track">
+            <div class="pdp-seen-logos">
+              <img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/1_43a2482a-7c6e-40c7-ad4b-d64a1003f465.png?v=1776105371" alt="Press 1">
+              <img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/4_90ec021c-1741-481d-9cfa-4c8bf254015c.png?v=1776105371" alt="Press 2">
+              <img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/5_7757de64-39c1-43c0-8f16-0e343fea3e3c.png?v=1776105371" alt="Press 3">
+              <img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/3_edb96c5c-d623-4c4b-9d88-9e7b1dc368a2.png?v=1776105371" alt="Press 4">
+              <img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/6_452c8988-9ebd-49b2-9511-b6792c11f710.png?v=1776105370" alt="Press 5">
+              <img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/1_43a2482a-7c6e-40c7-ad4b-d64a1003f465.png?v=1776105371" alt="Press 1">
+              <img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/4_90ec021c-1741-481d-9cfa-4c8bf254015c.png?v=1776105371" alt="Press 2">
+              <img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/5_7757de64-39c1-43c0-8f16-0e343fea3e3c.png?v=1776105371" alt="Press 3">
+              <img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/3_edb96c5c-d623-4c4b-9d88-9e7b1dc368a2.png?v=1776105371" alt="Press 4">
+              <img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/6_452c8988-9ebd-49b2-9511-b6792c11f710.png?v=1776105370" alt="Press 5">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ===== WHY ECHOVELLE ===== -->
+  <section class="why-ev">
+    <div class="container">
+      <h2 class="why-ev-title">WHY ECHOVELLE?</h2>
+      <div class="why-ev-layout">
+        <div class="why-ev-list">
+          <div class="why-ev-item why-ev-item--active" data-why-img="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/0508ins_800x_aec719ef-ec66-4e4c-8682-f4b81b2bc9fa.png?v=1775547659">
+            <div class="why-ev-header">
+              <span class="why-ev-num">01</span>
+              <h3 class="why-ev-heading">AAA+ Grade Akoya Pearls</h3>
+            </div>
+            <p class="why-ev-desc">We select only the <strong>top 1% of each harvest</strong> — pearls with mirror-bright luster, perfectly round shapes, and virtually flawless surfaces. Every pearl meets our uncompromising AAA+ standard.</p>
+          </div>
+          <div class="why-ev-item" data-why-img="模特图/Necklaces2模特.webp">
+            <div class="why-ev-header">
+              <span class="why-ev-num">02</span>
+              <h3 class="why-ev-heading">18K Gold Craftsmanship</h3>
+            </div>
+            <p class="why-ev-desc">Every clasp, post, and setting is crafted from <strong>solid 18K gold</strong> — never plated, never hollow. Our jewelry is built to last a lifetime and become a treasured heirloom.</p>
+          </div>
+          <div class="why-ev-item" data-why-img="模特图/Earrings1模特.webp">
+            <div class="why-ev-header">
+              <span class="why-ev-num">03</span>
+              <h3 class="why-ev-heading">Hand-Knotted Silk Thread</h3>
+            </div>
+            <p class="why-ev-desc">Each pearl is individually <strong>hand-knotted on natural silk thread</strong> using the traditional Japanese method, preventing pearls from rubbing and ensuring security if the strand ever breaks.</p>
+          </div>
+          <div class="why-ev-item" data-why-img="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/echovelle_3.webp?v=1775816221">
+            <div class="why-ev-header">
+              <span class="why-ev-num">04</span>
+              <h3 class="why-ev-heading">Ethically Sourced &amp; Ocean-Positive</h3>
+            </div>
+            <p class="why-ev-desc">Every pearl is <strong>traceable and responsibly harvested</strong> from certified farms across Japan and the Pacific — ensuring fair labor practices and minimal environmental impact. We give back, too: a portion of every purchase goes to <strong>clean ocean initiatives</strong>, and we partner exclusively with environmentally conscious pearl farmers committed to protecting marine ecosystems for future generations.</p>
+          </div>
+        </div>
+        <div class="why-ev-img">
+          <img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/0508ins_800x_aec719ef-ec66-4e4c-8682-f4b81b2bc9fa.png?v=1775547659" alt="Why Echovelle" id="whyEvImg">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PEARL ORIGIN (Right Image, Left Text) ===== -->
+  <section class="pearl-origin-v2">
+    <div class="pearl-origin-v2-inner">
+      <div class="pearl-origin-v2-text">
+        <p class="pearl-origin-v2-eyebrow">Pearl Origin</p>
+        <h3 class="pearl-origin-v2-country serif">Japan <img src="https://flagcdn.com/w40/jp.png" alt="Japan" class="pearl-origin-v2-flag"></h3>
+        <p class="pearl-origin-v2-desc">Japan is known as the birthplace of pearls and to this day still produces the finest quality Akoya pearls in the world. No other country can match the Japanese pearl farmers ability to produce the high luster and perfectly round shapes these classic pearls are famous for.</p>
+      </div>
+      <div class="pearl-origin-v2-img">
+        <img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/screenshot-20260414-013416.png?v=1776101675" alt="Japan Pearl Origin">
+        <div class="pearl-origin-v2-marker">
+          <div class="pearl-origin-v2-pin"></div>
+          <div class="pearl-origin-v2-pulse"></div>
+          <div class="pearl-origin-v2-pulse pearl-origin-v2-pulse--2"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PEARL GRADING SYSTEM ===== -->
+  <section class="pearl-grading">
+    <div class="pearl-grading-inner">
+      <div class="pearl-grading-img">
+        <img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/Our_Pearls.jpg?v=1776101312" alt="Pearl Grading System">
+      </div>
+      <div class="pearl-grading-text">
+        <div class="pearl-grading-watermark">E</div>
+        <h2 class="pearl-grading-title serif">Pearl Grading System</h2>
+        <div class="pearl-grading-divider"></div>
+        <p class="pearl-grading-desc">At <span class="pearl-grading-brand">Echovelle</span>, we believe our discerning clientele deserve nothing but the best. Therefore, when it comes to selecting pearls for our jewelry pieces, we rely on a stringent grading system to ensure we use only the most exceptional pearls.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PEARL GRADING CHART ===== -->
+  <section class="grade-chart">
+    <div class="container">
+      <div class="grade-grid">
+        <!-- AAAA -->
+        <div class="grade-col">
+          <div class="grade-img"><img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/20260105142906_3621_30.webp?v=1776101491" alt="AAAA Grade Pearls"></div>
+          <div class="grade-label">AAAA</div>
+          <div class="grade-specs">
+            <p><strong>Luster:</strong> Mirror-bright</p>
+            <p>Perfectly Round</p>
+            <p>Virtually flawless</p>
+            <p>0–1 tiny flaw (magnified)</p>
+            <p>Extremely rare</p>
+          </div>
+          <a href="#" class="grade-shop-btn">Discover AAAA Pieces</a>
+        </div>
+        <!-- AAA -->
+        <div class="grade-col">
+          <div class="grade-img"><img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/20260105142906_3620_30.webp?v=1776101491" alt="AAA Grade Pearls"></div>
+          <div class="grade-label">AAA</div>
+          <div class="grade-specs">
+            <p><strong>Luster:</strong> Highly bright</p>
+            <p>Round/near-round</p>
+            <p>Minor marks</p>
+            <p>1–2 small flaws</p>
+            <p>Rare</p>
+          </div>
+          <a href="#" class="grade-shop-btn">Discover AAA Pieces</a>
+        </div>
+        <!-- AA+ -->
+        <div class="grade-col">
+          <div class="grade-img"><img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/20260105142905_3618_30.webp?v=1776101491" alt="AA+ Grade Pearls"></div>
+          <span class="grade-current-tag">
+            <span class="grade-current-tag-label">This Product</span>
+            <span class="grade-current-tag-diamond"></span>
+          </span>
+          <div class="grade-label grade-label--dark">AA+</div>
+          <div class="grade-specs">
+            <p><strong>Luster:</strong> Highly bright/Gentle</p>
+            <p>Round/off-round</p>
+            <p>Minor marks</p>
+            <p>1–2 small flaws</p>
+            <p>Uncommon</p>
+          </div>
+          <a href="#" class="grade-shop-btn">Discover AA+ Pieces</a>
+        </div>
+        <!-- AA -->
+        <div class="grade-col">
+          <div class="grade-img"><img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/20260105142906_3619_30.webp?v=1776101491" alt="AA Grade Pearls"></div>
+          <div class="grade-label">AA</div>
+          <div class="grade-specs">
+            <p><strong>Luster:</strong> Gentle</p>
+            <p>off-round</p>
+            <p>medium blemishes</p>
+            <p>2+ pronounced flaws</p>
+            <p>Classic Quality</p>
+          </div>
+          <a href="#" class="grade-shop-btn">Discover AA Pieces</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SIGNATURE SERIES EDITORIAL ===== -->
+  <section class="art-series">
+    <div class="art-series-stick">
+      <h3 class="art-series-title">As Seen On</h3>
+      <div class="art-series-intro">
+        <h2 class="art-series-headline">
+          <span class="art-series-line">A Quiet Constellation Of Tastemakers, Founders, And Artists — Each Wearing Echovelle In Her Own Register, From Gala Evenings To Morning Light.</span>
+        </h2>
+      </div>
+    </div>
+
+    <div class="art-grid-wrap">
+      <div class="art-grid">
+        <div class="art-grid-col art-grid-col--left">
+          <div class="art-card art-card--portrait">
+            <div class="art-card-img">
+              <img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/WhatsApp_Image_2025-10-28_at_5.42.38_PM.webp?v=1776262596" alt="Amelia Hart wearing Echovelle">
+            </div>
+            <h4 class="art-card-name">Amelia Hart</h4>
+            <p class="art-card-price">Gala Evening, Paris</p>
+          </div>
+
+          <div class="art-card art-card--wide">
+            <div class="art-card-img">
+              <img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/Tyla_4x5_b981f125-80fd-46c0-a396-78604aa50124.jpg?v=1776262594" alt="Sienna Cole wearing Echovelle">
+            </div>
+            <h4 class="art-card-name">Sienna Cole</h4>
+            <p class="art-card-price">Off-Duty Weekend</p>
+          </div>
+
+          <div class="art-card art-card--wide">
+            <div class="art-card-img">
+              <img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/image_84fb5498-74bf-4f99-a8f6-f797d075a050.webp?v=1776262593" alt="Margot Rhys wearing Echovelle">
+            </div>
+            <h4 class="art-card-name">Margot Rhys</h4>
+            <p class="art-card-price">Sunlit Balcony</p>
+          </div>
+        </div>
+
+        <div class="art-grid-col art-grid-col--right">
+          <div class="art-card art-card--tall">
+            <div class="art-card-img">
+              <img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/Day1Vert52_1.7.1_1.webp?v=1776262593" alt="Elise Moreau wearing Echovelle">
+            </div>
+            <h4 class="art-card-name">Elise Moreau</h4>
+            <p class="art-card-price">Rue Saint-Honoré</p>
+          </div>
+
+          <div class="art-card art-card--portrait">
+            <div class="art-card-img">
+              <img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/Zoe_Kravitz_for_AB_1_and_link.webp?v=1776262593" alt="Isabelle Crane wearing Echovelle">
+            </div>
+            <h4 class="art-card-name">Isabelle Crane</h4>
+            <p class="art-card-price">Opening Night</p>
+          </div>
+
+          <div class="art-card art-card--tall">
+            <div class="art-card-img">
+              <img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/Screenshot_2023-05-31_at_15.21.20.webp?v=1776262593" alt="Noor Arlen wearing Echovelle">
+            </div>
+            <h4 class="art-card-name">Noor Arlen</h4>
+            <p class="art-card-price">Atelier Visit</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RECENTLY VIEWED ===== -->
+  <section class="recently-viewed">
+    <div class="container">
+      <div class="also-like-header"><h2>Recently Viewed</h2></div>
+      <div class="also-like-grid">
+        <div class="also-like-card">
+          <div class="also-like-card-img">
+            <span class="also-like-card-badge">Best Seller</span>
+            <div class="also-like-card-img-inner img-default" style="background-image:url('产品透明底/Bracelets1透明底.webp')"></div>
+            <div class="also-like-card-img-inner img-hover" style="background-image:url('模特图/Bracelets1模特.webp')"></div>
+          </div>
+          <div class="also-like-card-info">
+            <p class="card-category">Solaire</p>
+            <h4>Pearl Chain Bracelet</h4>
+            <p class="card-price">$198.00</p>
+            <p><span class="card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="card-review-count">7 reviews</span></p>
+          </div>
+        </div>
+        <div class="also-like-card">
+          <div class="also-like-card-img">
+            <span class="also-like-card-badge also-like-card-badge--gold">Premium</span>
+            <div class="also-like-card-img-inner img-default" style="background-image:url('产品透明底/Rings1透明底.webp')"></div>
+            <div class="also-like-card-img-inner img-hover" style="background-image:url('模特图/Rings1模特.webp')"></div>
+          </div>
+          <div class="also-like-card-info">
+            <p class="card-category">Solaire</p>
+            <h4>Pearl Solitaire Ring</h4>
+            <p class="card-price">$189.00</p>
+            <p><span class="card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="card-review-count">5 reviews</span></p>
+          </div>
+        </div>
+        <div class="also-like-card">
+          <div class="also-like-card-img">
+            <span class="also-like-card-badge also-like-card-badge--gold">New Arrival</span>
+            <div class="also-like-card-img-inner img-default" style="background-image:url('产品透明底/Earrings2透明底.webp')"></div>
+            <div class="also-like-card-img-inner img-hover" style="background-image:url('模特图/Earrings2模特.webp')"></div>
+          </div>
+          <div class="also-like-card-info">
+            <p class="card-category">Eclat</p>
+            <h4>Single Eclat Ear Cuff</h4>
+            <p class="card-price">$117.00</p>
+            <p><span class="card-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="card-review-count">2 reviews</span></p>
+          </div>
+        </div>
+        <div class="also-like-card">
+          <div class="also-like-card-img">
+            <span class="also-like-card-badge">Limited Edition</span>
+            <div class="also-like-card-img-inner img-default" style="background-image:url('产品透明底/Rings2透明底.webp')"></div>
+            <div class="also-like-card-img-inner img-hover" style="background-image:url('模特图/Rings2模特.webp')"></div>
+          </div>
+          <div class="also-like-card-info">
+            <p class="card-category">Croisette</p>
+            <h4>Twisted Pearl Band</h4>
+            <p class="card-price">$210.00</p>
+            <p><span class="card-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="card-review-count">4 reviews</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NEWSLETTER ===== -->
+  <section class="newsletter">
+    <div class="container">
+      <h2>Join the Echovelle World</h2>
+      <p>Discover new collections, pearl wisdom, and exclusive offers — delivered to your inbox.</p>
+      <form class="nl-form" onsubmit="event.preventDefault();">
+        <input type="email" placeholder="Enter your email">
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <img src="logo-echovelle.png" alt="ECHOVELLE" class="footer-logo">
+          <p class="footer-brand-text">True Beauty, Never Forced. Handpicked pearls, ethically sourced from the world's finest waters, crafted into timeless jewelry.</p>
+        </div>
+        <div><h5>Shop</h5><ul><li><a href="#">New Arrivals</a></li><li><a href="#">Necklaces</a></li><li><a href="#">Earrings</a></li><li><a href="#">Rings</a></li><li><a href="#">Bracelets</a></li><li><a href="#">Gift Sets</a></li></ul></div>
+        <div><h5>Our Story</h5><ul><li><a href="#">About Echovelle</a></li><li><a href="#">Sustainability</a></li><li><a href="#">Pearl Guide</a></li><li><a href="#">Our Symbolism</a></li><li><a href="#">Journal</a></li><li><a href="#">Press</a></li></ul></div>
+        <div><h5>Customer Service</h5><ul><li><a href="#">Contact Us</a></li><li><a href="#">FAQ</a></li><li><a href="#">Shipping</a></li><li><a href="#">Returns &amp; Repairs</a></li><li><a href="#">Gift Cards</a></li></ul></div>
+        <div><h5>Policies</h5><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms &amp; Conditions</a></li><li><a href="#">Accessibility</a></li><li><a href="#">CA Privacy Rights</a></li></ul></div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Echovelle. All rights reserved.</p>
+        <div class="footer-social"><a href="#">Instagram</a><a href="#">Pinterest</a><a href="#">Facebook</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== LENGTH GUIDE MODAL ===== -->
+  <div class="length-modal" id="lengthModal" aria-hidden="true" role="dialog" aria-labelledby="lengthModalTitle">
+    <div class="length-modal-backdrop" data-length-close></div>
+    <div class="length-modal-inner">
+      <button class="length-modal-close" data-length-close aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <h2 class="length-modal-title" id="lengthModalTitle">What's My Length?</h2>
+      <div class="length-modal-body">
+
+        <!-- 16" Choker -->
+        <div class="length-group">
+          <div class="length-illu">
+            <svg viewBox="0 0 200 200" fill="none" stroke="#1a1a1a" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round">
+              <path d="M100 14 C 84 14, 74 28, 74 44 C 74 60, 84 72, 100 72 C 116 72, 126 60, 126 44 C 126 28, 116 14, 100 14z"/>
+              <path d="M90 72 L 90 96 L 110 96 L 110 72"/>
+              <path d="M20 195 C 20 155, 58 102, 100 102 C 142 102, 180 155, 180 195"/>
+              <ellipse cx="100" cy="100" rx="38" ry="5" stroke="#8B7D4A" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="0.1 5"/>
+            </svg>
+            <span class="length-illu-label">16"</span>
+          </div>
+          <div class="length-rows">
+            <div class="length-row"><span class="length-row-label">Style Name</span><span class="length-row-value">Choker</span></div>
+            <div class="length-row"><span class="length-row-label">Where It Sits</span><span class="length-row-value">Snug at the base of the throat</span></div>
+            <div class="length-row">
+              <span class="length-row-label">Best Paired With</span><span class="length-row-value">Off-shoulder tops, boatnecks, strapless dresses</span>
+              <span class="length-row-sub">A statement piece — wear solo</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 18" Princess -->
+        <div class="length-group">
+          <div class="length-illu">
+            <svg viewBox="0 0 200 200" fill="none" stroke="#1a1a1a" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round">
+              <path d="M100 14 C 84 14, 74 28, 74 44 C 74 60, 84 72, 100 72 C 116 72, 126 60, 126 44 C 126 28, 116 14, 100 14z"/>
+              <path d="M90 72 L 90 96 L 110 96 L 110 72"/>
+              <path d="M20 195 C 20 155, 58 102, 100 102 C 142 102, 180 155, 180 195"/>
+              <ellipse cx="100" cy="116" rx="42" ry="6" stroke="#8B7D4A" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="0.1 5"/>
+            </svg>
+            <span class="length-illu-label">18"</span>
+          </div>
+          <div class="length-rows">
+            <div class="length-row"><span class="length-row-label">Style Name</span><span class="length-row-value">Princess</span></div>
+            <div class="length-row"><span class="length-row-label">Where It Sits</span><span class="length-row-value">Rests at the collarbone</span></div>
+            <div class="length-row">
+              <span class="length-row-label">Best Paired With</span><span class="length-row-value">Blouses, crew necks, tailored dresses</span>
+              <span class="length-row-sub">Most Popular — Echovelle's signature length</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 20" Long Princess -->
+        <div class="length-group">
+          <div class="length-illu">
+            <svg viewBox="0 0 200 200" fill="none" stroke="#1a1a1a" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round">
+              <path d="M100 14 C 84 14, 74 28, 74 44 C 74 60, 84 72, 100 72 C 116 72, 126 60, 126 44 C 126 28, 116 14, 100 14z"/>
+              <path d="M90 72 L 90 96 L 110 96 L 110 72"/>
+              <path d="M20 195 C 20 155, 58 102, 100 102 C 142 102, 180 155, 180 195"/>
+              <ellipse cx="100" cy="130" rx="46" ry="6.5" stroke="#8B7D4A" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="0.1 5"/>
+            </svg>
+            <span class="length-illu-label">20"</span>
+          </div>
+          <div class="length-rows">
+            <div class="length-row"><span class="length-row-label">Style Name</span><span class="length-row-value">Long Princess</span></div>
+            <div class="length-row"><span class="length-row-label">Where It Sits</span><span class="length-row-value">Just below the collarbone</span></div>
+            <div class="length-row">
+              <span class="length-row-label">Best Paired With</span><span class="length-row-value">V-necks, scoop necks, button-downs</span>
+              <span class="length-row-sub">Effortless everyday elegance</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 22" Matinee -->
+        <div class="length-group">
+          <div class="length-illu">
+            <svg viewBox="0 0 200 200" fill="none" stroke="#1a1a1a" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round">
+              <path d="M100 14 C 84 14, 74 28, 74 44 C 74 60, 84 72, 100 72 C 116 72, 126 60, 126 44 C 126 28, 116 14, 100 14z"/>
+              <path d="M90 72 L 90 96 L 110 96 L 110 72"/>
+              <path d="M20 195 C 20 155, 58 102, 100 102 C 142 102, 180 155, 180 195"/>
+              <ellipse cx="100" cy="145" rx="50" ry="7" stroke="#8B7D4A" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="0.1 5"/>
+            </svg>
+            <span class="length-illu-label">22"</span>
+          </div>
+          <div class="length-rows">
+            <div class="length-row"><span class="length-row-label">Style Name</span><span class="length-row-value">Matinee</span></div>
+            <div class="length-row"><span class="length-row-label">Where It Sits</span><span class="length-row-value">At the top of the bust</span></div>
+            <div class="length-row">
+              <span class="length-row-label">Best Paired With</span><span class="length-row-value">High necklines, sweaters, business attire</span>
+              <span class="length-row-sub">Refined smart-casual wear</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 24" Opera -->
+        <div class="length-group">
+          <div class="length-illu">
+            <svg viewBox="0 0 200 200" fill="none" stroke="#1a1a1a" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round">
+              <path d="M100 14 C 84 14, 74 28, 74 44 C 74 60, 84 72, 100 72 C 116 72, 126 60, 126 44 C 126 28, 116 14, 100 14z"/>
+              <path d="M90 72 L 90 96 L 110 96 L 110 72"/>
+              <path d="M20 195 C 20 155, 58 102, 100 102 C 142 102, 180 155, 180 195"/>
+              <ellipse cx="100" cy="162" rx="54" ry="7.5" stroke="#8B7D4A" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="0.1 5"/>
+            </svg>
+            <span class="length-illu-label">24"</span>
+          </div>
+          <div class="length-rows">
+            <div class="length-row"><span class="length-row-label">Style Name</span><span class="length-row-value">Opera</span></div>
+            <div class="length-row"><span class="length-row-label">Where It Sits</span><span class="length-row-value">Below the bust — or doubled at the collarbone</span></div>
+            <div class="length-row">
+              <span class="length-row-label">Best Paired With</span><span class="length-row-value">Evening wear, column dresses, silk tops</span>
+              <span class="length-row-sub">Wear single — or doubled as choker + princess</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== STICKY BUY BAR ===== -->
+  <div class="sticky-buy-bar" id="stickyBuyBar">
+    <div class="sticky-buy-inner">
+      <div class="sticky-buy-product">
+        <img src="产品页主图/1.webp" alt="" class="sticky-buy-img">
+        <div class="sticky-buy-info">
+          <p class="sticky-buy-name">Akoya Pearl Strand Necklace</p>
+          <p class="sticky-buy-price">$385.00 <span class="sticky-buy-original">$520.00</span></p>
+        </div>
+      </div>
+      <div class="sticky-buy-options">
+        <select class="sticky-buy-select">
+          <option>White Rosé</option>
+          <option>Pink</option>
+          <option>Golden</option>
+          <option>Tahitian</option>
+        </select>
+        <select class="sticky-buy-select">
+          <option>18"</option>
+          <option>16"</option>
+          <option>20"</option>
+          <option>22"</option>
+          <option>24"</option>
+        </select>
+      </div>
+      <button class="sticky-buy-btn sans">Buy Now</button>
+    </div>
+  </div>
+
+  <script>
+    // Announcement slider
+    (function() {
+      var slides = document.querySelectorAll('.announcement-slide');
+      var prevBtn = document.querySelector('.announcement-arrow--prev');
+      var nextBtn = document.querySelector('.announcement-arrow--next');
+      var current = 0, timer;
+      function goTo(next) {
+        slides[current].classList.remove('active');
+        slides[current].classList.add('exit-up');
+        var prev = current;
+        setTimeout(function() { slides[prev].classList.remove('exit-up'); }, 500);
+        current = (next + slides.length) % slides.length;
+        slides[current].classList.add('active');
+      }
+      function startAuto() { clearInterval(timer); timer = setInterval(function() { goTo(current + 1); }, 3500); }
+      prevBtn.addEventListener('click', function() { goTo(current - 1); startAuto(); });
+      nextBtn.addEventListener('click', function() { goTo(current + 1); startAuto(); });
+      startAuto();
+    })();
+
+    // Thumbnail click → scroll to image + highlight
+    (function() {
+      var thumbs = document.querySelectorAll('.pdp-thumb');
+      var images = document.querySelectorAll('.pdp-img-item');
+
+      thumbs.forEach(function(thumb) {
+        thumb.addEventListener('click', function() {
+          var idx = parseInt(thumb.getAttribute('data-index'));
+          thumbs.forEach(function(t) { t.classList.remove('active'); });
+          thumb.classList.add('active');
+          images[idx].scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      // Update active thumb on scroll
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var idx = Array.from(images).indexOf(entry.target);
+            thumbs.forEach(function(t) { t.classList.remove('active'); });
+            if (thumbs[idx]) thumbs[idx].classList.add('active');
+          }
+        });
+      }, { threshold: 0.5 });
+
+      images.forEach(function(img) { observer.observe(img); });
+    })();
+
+    // Color swatches
+    document.querySelectorAll('.pdp-swatches').forEach(function(group) {
+      group.querySelectorAll('.pdp-swatch').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          group.querySelectorAll('.pdp-swatch').forEach(function(b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          var label = document.querySelector('.pdp-option-label strong');
+          if (label) label.textContent = btn.getAttribute('title');
+        });
+      });
+    });
+
+    // Length selector
+    document.querySelectorAll('.pdp-length').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.pdp-length').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+      });
+    });
+
+    // Why Echovelle accordion + image swap
+    (function() {
+      var items = document.querySelectorAll('.why-ev-item');
+      var img = document.getElementById('whyEvImg');
+      if (!items.length || !img) return;
+      items.forEach(function(item) {
+        item.addEventListener('click', function() {
+          var wasActive = item.classList.contains('why-ev-item--active');
+          items.forEach(function(i) { i.classList.remove('why-ev-item--active'); });
+          if (!wasActive) {
+            item.classList.add('why-ev-item--active');
+            var newSrc = item.getAttribute('data-why-img');
+            if (newSrc) {
+              img.style.opacity = '0';
+              setTimeout(function() {
+                img.src = newSrc;
+                img.style.opacity = '1';
+              }, 300);
+            }
+          }
+        });
+      });
+    })();
+
+    // Accordions
+    document.querySelectorAll('.pdp-accordion-header').forEach(function(header) {
+      header.addEventListener('click', function() {
+        header.parentElement.classList.toggle('open');
+      });
+    });
+
+    // Dual sticky scroll: text scrolls with images, whichever finishes first sticks
+    (function() {
+      var info = document.querySelector('.pdp-info');
+      function updateStickyTop() {
+        var infoHeight = info.offsetHeight;
+        var vh = window.innerHeight;
+        if (infoHeight <= vh) {
+          info.style.top = '0px';
+        } else {
+          info.style.top = -(infoHeight - vh) + 'px';
+        }
+      }
+      updateStickyTop();
+      window.addEventListener('resize', updateStickyTop);
+      // Recalc when accordions open/close
+      document.querySelectorAll('.pdp-accordion-header').forEach(function(h) {
+        h.addEventListener('click', function() { setTimeout(updateStickyTop, 450); });
+      });
+    })();
+
+    // Length Guide modal
+    (function() {
+      var modal = document.getElementById('lengthModal');
+      var opener = document.querySelector('.pdp-size-header');
+      if (!modal || !opener) return;
+      function open(e) {
+        if (e) e.preventDefault();
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+      }
+      function close() {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+      }
+      opener.addEventListener('click', open);
+      modal.querySelectorAll('[data-length-close]').forEach(function(el) {
+        el.addEventListener('click', close);
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('open')) close();
+      });
+    })();
+
+    // Signature Series sticky wrapper: smooth release 100px before section leaves viewport
+    (function() {
+      var stick = document.querySelector('.art-series-stick');
+      var section = document.querySelector('.art-series');
+      if (!stick || !section) return;
+      var stickTop = 83;
+      var releaseBuffer = 100;
+      var ticking = false;
+      function update() {
+        ticking = false;
+        var rect = section.getBoundingClientRect();
+        var stickH = stick.offsetHeight || 360;
+        var threshold = stickTop + stickH + releaseBuffer;
+        var offset = threshold - rect.bottom;
+        if (offset < 0) offset = 0;
+        stick.style.transform = 'translateY(' + (-offset) + 'px)';
+      }
+      function onScroll() {
+        if (!ticking) {
+          window.requestAnimationFrame(update);
+          ticking = true;
+        }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      update();
+    })();
+
+    // Signature Series headline: word-by-word left-to-right fill (line by line in reading order)
+    (function() {
+      var headline = document.querySelector('.art-series-headline');
+      if (!headline) return;
+      var lines = headline.querySelectorAll('.art-series-line');
+      if (!lines.length) return;
+      // Wrap each word in a span (preserve whitespace)
+      lines.forEach(function(line) {
+        var text = line.textContent;
+        var tokens = text.split(/(\s+)/);
+        line.textContent = '';
+        tokens.forEach(function(tok) {
+          if (tok.length === 0) return;
+          if (/^\s+$/.test(tok)) {
+            line.appendChild(document.createTextNode(tok));
+          } else {
+            var span = document.createElement('span');
+            span.className = 'art-word';
+            span.textContent = tok;
+            line.appendChild(span);
+          }
+        });
+      });
+      var words = headline.querySelectorAll('.art-word');
+      var section = document.querySelector('.art-series');
+      function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+      function update() {
+        var vh = window.innerHeight || document.documentElement.clientHeight;
+        var sRect = section.getBoundingClientRect();
+        // Progress starts when section top enters viewport; ends partway through
+        var scrolled = Math.max(0, vh - sRect.top - vh * 0.5);
+        var range = Math.max(1, Math.min(sRect.height * 0.6, vh * 1.2));
+        var progress = clamp(scrolled / range);
+        var n = words.length;
+        words.forEach(function(w, i) {
+          var segStart = i / n;
+          var segEnd = (i + 1) / n;
+          var fill;
+          if (progress <= segStart) fill = 0;
+          else if (progress >= segEnd) fill = 1;
+          else fill = (progress - segStart) / (segEnd - segStart);
+          w.style.setProperty('--fill', (fill * 100) + '%');
+        });
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    })();
+
+    // Sticky buy bar: show when PDP section scrolls past
+    (function() {
+      var bar = document.getElementById('stickyBuyBar');
+      var pdp = document.querySelector('.pdp');
+      window.addEventListener('scroll', function() {
+        var rect = pdp.getBoundingClientRect();
+        if (rect.bottom < 0) {
+          bar.classList.add('visible');
+        } else {
+          bar.classList.remove('visible');
+        }
+      });
+    })();
+
+    // Header: hide on scroll down, show on scroll up
+    (function() {
+      var header = document.getElementById('header');
+      var lastScrollY = 0;
+      window.addEventListener('scroll', function() {
+        var currentY = window.scrollY;
+        header.classList.toggle('scrolled', currentY > 100);
+        if (currentY > lastScrollY && currentY > 200) {
+          header.classList.add('header-hidden');
+        } else {
+          header.classList.remove('header-hidden');
+        }
+        lastScrollY = currentY;
+      });
+
+      // Mega menu: add mega-open class to header on hover
+      document.querySelectorAll('.main-nav > li').forEach(function(li) {
+        if (li.querySelector('.mega-menu')) {
+          li.addEventListener('mouseenter', function() { header.classList.add('mega-open'); });
+          li.addEventListener('mouseleave', function() { header.classList.remove('mega-open'); });
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
