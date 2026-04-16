@@ -2358,11 +2358,16 @@
       });
     });
 
-    // Why Echovelle accordion + image swap
+    // Why Echovelle accordion + image swap (preload + onload)
     (function() {
       var items = document.querySelectorAll('.why-ev-item');
       var img = document.getElementById('whyEvImg');
       if (!items.length || !img) return;
+      // Preload all images into browser cache
+      items.forEach(function(item) {
+        var src = item.getAttribute('data-why-img');
+        if (src) { var pre = new Image(); pre.src = src; }
+      });
       items.forEach(function(item) {
         item.addEventListener('click', function() {
           var wasActive = item.classList.contains('why-ev-item--active');
@@ -2373,8 +2378,10 @@
             if (newSrc) {
               img.style.opacity = '0';
               setTimeout(function() {
+                img.onload = function() { img.style.opacity = '1'; img.onload = null; };
                 img.src = newSrc;
-                img.style.opacity = '1';
+                // Fallback if image already cached (onload won't fire)
+                if (img.complete) { img.style.opacity = '1'; img.onload = null; }
               }, 300);
             }
           }
